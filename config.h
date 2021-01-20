@@ -13,15 +13,18 @@ static const char dmenufont[]       = "JetBrainsMono:monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_red[]			= "#ff0000";
-static const char col_black[]		= "#000000";
+static const char col_gray4[]       = "#ebdbb2";
+static const char col_cyan[]        = "#458588";
+static const char col_cyan2[]        = "#83a598";
+static const char col_blue[]        = "#076678";
+static const char col_purple[]      = "#b16286";
+static const char col_red[]	    = "#ff0000";
+static const char col_black[]	    = "#1c1c1c";
 static const char col_black2[]	    = "#111111";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray4, col_black, col_black2},
-	[SchemeSel]  = { col_gray4, col_black,  col_black2  },
+	[SchemeNorm] = { col_gray4, col_black, col_black},
+	[SchemeSel]  = { col_gray4, col_blue,  col_black  },
 };
 
 /* tagging */
@@ -33,7 +36,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating monitor */
-    { "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+        { "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -126,7 +129,6 @@ static Key keys[] = {
     { MODKEY,                       XK_r,              spawn,          {.v = reloadbarcmd } },
     { MODKEY,                       XK_n,              spawn,          {.v = mpcnext } },
     { MODKEY,                       XK_m,              spawn,          {.v = mpctoggle } },
-	{ MODKEY,						XK_f,	           togglefullscr,  {0} },
     { MODKEY|ShiftMask,             XK_Return,         spawn,          {.v = termcmd } },
     { MODKEY,                       XK_b,              togglebar,      {0} },
     STACKKEYS(MODKEY,                          focus)
