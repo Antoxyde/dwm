@@ -10,21 +10,22 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono:size=12" };
 static const char dmenufont[]       = "JetBrainsMono:monospace:size=12";
+static const char col_white[]       = "#ebdbb2";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#ebdbb2";
 static const char col_cyan[]        = "#458588";
-static const char col_cyan2[]        = "#83a598";
-static const char col_blue[]        = "#076678";
+static const char col_cyan2[]       = "#83a598";
+static const char col_blue[]        = "#83a598";
 static const char col_purple[]      = "#b16286";
-static const char col_red[]	    = "#ff0000";
+static const char col_red[]	        = "#ff0000";
 static const char col_black[]	    = "#1c1c1c";
 static const char col_black2[]	    = "#111111";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray4, col_black, col_black},
-	[SchemeSel]  = { col_gray4, col_blue,  col_black  },
+	[SchemeNorm] = { col_white, col_black, col_black},
+	[SchemeSel]  = { col_black, col_white,  col_black  },
 };
 
 /* tagging */
@@ -70,6 +71,8 @@ static const char* browsercmd[] = { "firefox", NULL };
 static const char *mutecmd[] = {"plwrap", "mute", NULL};
 static const char *loudercmd[] = {"plwrap", "up", NULL};
 static const char *lowercmd[] = {"plwrap", "down", NULL};
+static const char *brightercmd[] = {"xbacklight", "-inc", "10", NULL};
+static const char *dullercmd[] = {"xbacklight", "-dec", "10", NULL};
 static const char* lockcmd[] = {"mylock", NULL};
 static const char* reloadbarcmd[] = {"reloadbar", NULL};
 static const char* mpcnext[]= {"mpc", "next", NULL};
@@ -124,6 +127,8 @@ static Key keys[] = {
 	{ ControlMask,					0xffbe /* f1 */,    spawn, 		   {.v = mutecmd } },
 	{ ControlMask,					0xffbf /* f2 */,    spawn, 		   {.v = lowercmd } },
 	{ ControlMask,					0xffc0 /* f3 */,    spawn, 		   {.v = loudercmd } },
+    { ControlMask,                  0xffc1 /* f4 */,    spawn,         {.v = dullercmd } },
+    { ControlMask,                  0xffc2 /* f5 */,    spawn,         {.v = brightercmd } },
 	{ MODKEY|ControlMask,			XK_l,	   spawn, 		   {.v = lockcmd } },
     { MODKEY,                       0x77 /* w */,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_r,              spawn,          {.v = reloadbarcmd } },
