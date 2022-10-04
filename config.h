@@ -79,6 +79,8 @@ static const char* mpcnext[]= {"mpc", "next", NULL};
 static const char* mpctoggle[]= {"mpc", "toggle", NULL};
 static const char* termtmuxcmd[] = {"kitty", "-e", "tmux", "-2", "new-session", "-A", "-s", "main", NULL};
 
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname,NULL};
 
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
@@ -94,6 +96,8 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termtmuxcmd } },
+    { MODKEY,                       XK_u,  togglescratch,  {.v = scratchpadcmd } },
+    { MODKEY,                       0x79 /* y */,  spawn,  SHCMD("cat ~/.unicodes.txt |dmenu -l 55 |awk '{print $NF}' |tr -d '\n' |xclip -sel clip") },
 	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
